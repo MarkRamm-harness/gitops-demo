@@ -8,9 +8,11 @@ spec:
   source:
     chart: helm-guestbook
     repoURL: https://github.com/MarkRamm-harness/gitops-demo
+    path: helm-guestbook
     targetRevision: 1.16.1
     helm:
       releaseName: helm-guestbook
+      values: values-production.yaml
   destination:
     server: "https://kubernetes.default.svc"
     namespace: helm-guestbook-flux
