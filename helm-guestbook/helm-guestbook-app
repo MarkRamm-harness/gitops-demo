@@ -14,3 +14,5 @@ spec:
     path: helm-guestbook
     repoURL: https://github.com/MarkRamm-harness/gitops-demo/
     targetRevision: main
+    valueFiles:
+      - values-production.yaml  
