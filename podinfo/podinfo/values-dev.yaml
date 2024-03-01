@@ -64,7 +64,7 @@ probes:
     successThreshold: 1
     initialDelaySeconds: 1
 image:
-  tag: "6.5.0"
+  tag: "6.5.1"
   repository: "ghcr.io/stefanprodan/podinfo"
   pullPolicy: "IfNotPresent"
 cache: ""
