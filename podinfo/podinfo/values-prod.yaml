@@ -1,5 +1,5 @@
 image:
-  tag: "5.3.2"
+  tag: "5.4.1"
   repository: "ghcr.io/stefanprodan/podinfo"
   pullPolicy: "IfNotPresent"
 cache: ""
