@@ -1,0 +1,23 @@
+source:
+  repoURL: https://github.com/MarkRamm-harness/gitops-demo
+  path: podinfo/podinfo
+  targetRevision: main
+  helm:
+    valueFiles:
+      - values-dev.yaml
+destination:
+  server: https://kubernetes.default.svc
+  namespace: podinfo
+syncPolicy:
+  automated:
+    selfHeal: true
+  syncOptions:
+    - PrunePropagationPolicy=undefined
+    - CreateNamespace=true
+    - Validate=true
+    - PruneLast=false
+    - ApplyOutOfSyncOnly=false
+    - FluxSubsystem=false
+    - AutoCreateFluxResources=false
+    - Replace=false
+    - retry=false
