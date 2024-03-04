@@ -1,4 +1,10 @@
-source:
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: podinfo-prod
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.iosource:
   repoURL: https://github.com/MarkRamm-harness/gitops-demo
   path: podinfo/podinfo
   targetRevision: main
