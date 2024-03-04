@@ -1,0 +1,24 @@
+source:
+  repoURL: https://github.com/MarkRamm-harness/gitops-demo
+  path: podinfo/podinfo
+  targetRevision: main
+  helm:
+    valueFiles:
+      - values-prod.yaml
+destination:
+  server: https://34.75.37.82
+  namespace: podinfo
+project: 207bda4a
+syncPolicy:
+  automated:
+    selfHeal: true
+  syncOptions:
+    - PrunePropagationPolicy=undefined
+    - CreateNamespace=true
+    - Validate=true
+    - PruneLast=false
+    - ApplyOutOfSyncOnly=false
+    - FluxSubsystem=false
+    - AutoCreateFluxResources=false
+    - Replace=false
+    - retry=false
