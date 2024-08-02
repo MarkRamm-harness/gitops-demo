@@ -1,14 +1,21 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: prometheus
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 13.7.2
-    chart: kube-prometheus-stack
+source:
+  repoURL: https://github.com/MarkRamm-harness/gitops-demo
+  path: platform
+  targetRevision: main
+  directory:
+    recurse: true
+    jsonnet: {}
 destination:
   server: https://kubernetes.default.svc
-  namespace: prometheus
+  namespace: platform
+syncPolicy:
+  syncOptions:
+    - PrunePropagationPolicy=undefined
+    - CreateNamespace=true  # Set to true to enable automatic namespace creation
+    - Validate=true
+    - PruneLast=false
+    - ApplyOutOfSyncOnly=false
+    - FluxSubsystem=false
+    - AutoCreateFluxResources=false
+    - Replace=false
+    - retry=false
