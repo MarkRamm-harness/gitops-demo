@@ -4,7 +4,7 @@ metadata:
   name: helm-guestbook
   namespace: argocd
 spec:
-  project: default
+  project: 207bda4a
   source:
     chart: helm-guestbook
     repoURL: https://github.com/MarkRamm-harness/gitops-demo
