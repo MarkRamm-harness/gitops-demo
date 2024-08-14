@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: podinfo-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/MarkRamm-harness/gitops-demo
+    path: podinfo/podinfo
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values-prod.yaml
+  destination:
+    server:  "https://kubernetes.default.svc"
+    namespace: pod-prod
+  syncPolicy:
+    syncOptions:
+      - PrunePropagationPolicy=undefined
+      - CreateNamespace=true
+      - Validate=true
+      - PruneLast=false
+      - ApplyOutOfSyncOnly=false
+      - FluxSubsystem=false
+      - AutoCreateFluxResources=false
+      - Replace=false
+      - retry=false
