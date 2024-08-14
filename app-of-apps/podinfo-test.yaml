@@ -4,7 +4,7 @@ metadata:
   name: podinfo-test
   namespace: argocd
 spec:
-  project: default
+  project: 207bda4a
   source:
     repoURL: https://github.com/MarkRamm-harness/gitops-demo
     path: podinfo/podinfo
