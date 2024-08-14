@@ -1,0 +1,28 @@
+piVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-dev
+  namespace: argocd
+spec:
+  project: 207bda4a
+  source:
+    repoURL: https://github.com/MarkRamm-harness/gitops-demo
+    path: helm-guestbook
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server:  "https://kubernetes.default.svc"
+    namespace: guestbook-dev
+  syncPolicy:
+    syncOptions:
+      - PrunePropagationPolicy=undefined
+      - CreateNamespace=true
+      - Validate=true
+      - PruneLast=false
+      - ApplyOutOfSyncOnly=false
+      - FluxSubsystem=false
+      - AutoCreateFluxResources=false
+      - Replace=false
+      - retry=false
