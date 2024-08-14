@@ -1,3 +1,10 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: podinfo-test
+  namespace: podinfo-test
+spec:
+  project: default
 source:
   repoURL: https://github.com/MarkRamm-harness/gitops-demo
   path: podinfo/podinfo
