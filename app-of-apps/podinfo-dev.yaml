@@ -13,7 +13,7 @@ spec:
       valueFiles:
         - values-dev.yaml
   destination:
-    server: https://35.224.207.9
+    server:  "https://kubernetes.default.svc"
     namespace: pod-dev
   syncPolicy:
     syncOptions:
