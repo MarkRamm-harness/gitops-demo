@@ -4,7 +4,7 @@ source:
   targetRevision: main
   helm:
     valueFiles:
-      - values-test.yaml
+      - podinfo-test.yaml
 destination:
   server: https://35.224.207.9
   namespace: pod-test
