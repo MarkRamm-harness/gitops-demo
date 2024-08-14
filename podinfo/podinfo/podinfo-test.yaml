@@ -1,0 +1,88 @@
+image:
+  tag: "5.5.0"
+  repository: "ghcr.io/stefanprodan/podinfo"
+  pullPolicy: "IfNotPresent"
+cache: ""
+certificate:
+  dnsNames:
+  - "podinfo"
+  create: false
+  issuerRef:
+    kind: "ClusterIssuer"
+    name: "self-signed"
+resources:
+  requests:
+    memory: "64Mi"
+    cpu: "100m"
+  limits:
+    memory: "256Mi"
+serviceAccount:
+  imagePullSecrets: []
+  name: null
+  enabled: false
+serviceMonitor:
+  additionalLabels: {}
+  interval: "15s"
+  enabled: false
+securityContext: {}
+podAnnotations: {}
+backends: []
+faults:
+  delay: false
+  unhealthy: false
+  testTimeout: false
+  error: false
+  unready: false
+  testFail: false
+redis:
+  tag: "7.0.7"
+  repository: "redis"
+  enabled: true
+nodeSelector: {}
+ingress:
+  hosts:
+  - paths:
+    - path: "/"
+      pathType: "ImplementationSpecific"
+    host: "podinfo.local"
+  additionalLabels: {}
+  annotations: {}
+  className: ""
+  tls: []
+  enabled: false
+replicaCount: 1
+linkerd:
+  profile:
+    enabled: false
+tolerations: []
+logLevel: "info"
+ui:
+  color: "#34577c"
+  logo: ""
+  message: ""
+service:
+  httpPort: 9898
+  grpcPort: 9999
+  annotations: {}
+  type: "ClusterIP"
+  nodePort: 31198
+  enabled: true
+  metricsPort: 9797
+  externalPort: 9898
+  grpcService: "podinfo"
+h2c:
+  enabled: false
+hpa:
+  maxReplicas: 5
+  memory: null
+  cpu: 99
+  requests: null
+  enabled: true
+backend: null
+tls:
+  secretName: null
+  certPath: "/data/cert"
+  port: 9899
+  hostPort: null
+  enabled: false
+affinity: {}
